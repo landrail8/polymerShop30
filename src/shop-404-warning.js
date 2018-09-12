@@ -29,10 +29,10 @@ class Shop404Warning extends PolymerElement {
 
     <div>
       <iron-icon icon="error"></iron-icon>
-      <h1>Sorry, we couldn't find that page</h1>
+      <h1>К сожалению, мы не нашли эту страницу</h1>
     </div>
     <shop-button>
-      <a href="/">Go to the home page</a>
+      <a href="/">Начальная страница</a>
     </shop-button>
 `;
   }
