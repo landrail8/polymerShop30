@@ -246,7 +246,7 @@ class ShopApp extends PolymerElement {
             <paper-icon-button icon="arrow-back" aria-label="Go back"></paper-icon-button>
           </a>
         </div>
-        <div class="logo" main-title=""><a href="/" aria-label="SHOP Home">SHOP</a></div>
+        <div class="logo" main-title=""><a href="/" aria-label="SHOP Home">Хюгге-лавка</a></div>
         <div class="cart-btn-container">
           <a href="/cart" tabindex="-1">
             <paper-icon-button icon="shopping-cart" aria-label\$="Shopping cart: [[_computePluralizedQuantity(numItems)]]"></paper-icon-button>
@@ -305,8 +305,8 @@ class ShopApp extends PolymerElement {
     </iron-pages>
 
     <footer>
-      <a href="https://www.polymer-project.org/3.0/toolbox/">Made by Polymer</a>
-      <div class="demo-label">Demo Only</div>
+      <a href="/">hygge-dukon</a>
+      <!-- <div class="demo-label">Demo Only</div>-->
     </footer>
 
     <!-- a11y announcer -->

@@ -96,7 +96,7 @@ class ShopHome extends PolymerElement {
           </a>
           <h2>[[item.title]]</h2>
           <shop-button>
-            <a aria-label\$="[[item.title]] Shop Now" href\$="/list/[[item.name]]">Shop Now</a>
+            <a aria-label\$="[[item.title]] Перейти к товарам" href\$="/list/[[item.name]]">Перейти к товарам</a>
           </shop-button>
         </div>
       </template>
