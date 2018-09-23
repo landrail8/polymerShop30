@@ -36,14 +36,14 @@
       ],
       "js": {
         "compile": "es2015",
-        "minify": true,
+        "minify": false,
         "transformModulesToAmd": true
       },
       "css": {
-        "minify": true
+        "minify": false
       },
       "html": {
-        "minify": true
+        "minify": false
       },
       "bundle": true,
       "addServiceWorker": true
