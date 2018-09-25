@@ -40,7 +40,7 @@ class ShopHome extends PolymerElement {
         margin-bottom: 40px;
       }
 
-      .item:nth-of-type(3),
+      .item:nth-of-type(4),
       .item:nth-of-type(4) {
         display: inline-block;
         width: 50%;
