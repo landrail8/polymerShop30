@@ -119,8 +119,8 @@ class ShopCheckout extends PolymerElement {
               </div>
 
               <header class="subsection" visible$="[[_hasItems]]">
-                <h1>Checkout</h1>
-                <span>Shop is a demo app - form data will not be sent</span>
+                <h1>Подтвердить заказ</h1>
+                <span>Данные Вашего заказа</span>
               </header>
 
               <div class="subsection grid" visible$="[[_hasItems]]">

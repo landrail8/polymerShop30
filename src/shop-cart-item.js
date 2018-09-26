@@ -184,7 +184,7 @@ class ShopCartItem extends PolymerElement {
             <shop-md-decorator aria-hidden="true"></shop-md-decorator>
           </shop-select>
         </div>
-        <div class="size">Size: <span>[[entry.size]]</span></div>
+        <!--SHAG<div class="size">Size: <span>[[entry.size]]</span></div>-->
         <div class="price">[[_formatPrice(entry.item.price)]]</div>
 
         <!--
@@ -213,7 +213,7 @@ class ShopCartItem extends PolymerElement {
       bubbles: true, composed: true, detail: {
         item: this.entry.item,
         quantity: quantity,
-        size: this.entry.size
+        //SHAG size: this.entry.size
       }}));
   }
 

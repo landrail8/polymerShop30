@@ -146,8 +146,11 @@ class ShopDetail extends PolymerElement {
         <h1>[[item.title]]</h1>
         <div class="price">[[_formatPrice(item.price)]]</div>
         <div class="pickers">
+          
+        
+          <!--SHAG
           <shop-select>
-            <label id="sizeLabel" prefix>Size</label>
+          <label id="sizeLabel" prefix>Size</label>
             <select id="sizeSelect" aria-labelledby="sizeLabel">
               <option value="XS">XS</option>
               <option value="S">S</option>
@@ -159,6 +162,9 @@ class ShopDetail extends PolymerElement {
               <shop-underline></shop-underline>
             </shop-md-decorator>
           </shop-select>
+          -->
+
+
           <shop-select>
             <label id="quantityLabel" prefix>Quantity</label>
             <select id="quantitySelect" aria-labelledby="quantityLabel">
@@ -234,7 +240,7 @@ class ShopDetail extends PolymerElement {
 
           // Reset the select menus.
           this.$.quantitySelect.value = '1';
-          this.$.sizeSelect.value = 'M';
+          //SHAG this.$.sizeSelect.value = 'M';
 
           this.dispatchEvent(new CustomEvent('change-section', {
             bubbles: true, composed: true, detail: {
@@ -263,7 +269,7 @@ class ShopDetail extends PolymerElement {
       bubbles: true, composed: true, detail: {
         item: this.item,
         quantity: parseInt(this.$.quantitySelect.value, 10),
-        size: this.$.sizeSelect.value
+        //SHAG size: this.$.sizeSelect.value
       }}));
   }
 
