@@ -101,6 +101,11 @@ class ShopHome extends PolymerElement {
         </div>
       </template>
     </dom-repeat>
+
+    <button onClick="()=>alert('sending')">
+      send email
+    </button>
+    
 `;
   }
 
