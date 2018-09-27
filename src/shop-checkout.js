@@ -132,18 +132,18 @@ class ShopCheckout extends PolymerElement {
                           placeholder="Email" autofocus required
                           aria-labelledby="accountEmailLabel accountInfoHeading">
                       <shop-md-decorator error-message="Invalid Email" aria-hidden="true">
-                        <label id="accountEmailLabel">Email</label>
+                        <label id="accountEmailLabel">E-mail</label>
                         <shop-underline></shop-underline>
                       </shop-md-decorator>
                     </shop-input>
                   </div>
                   <div class="row input-row">
                     <shop-input>
-                      <input type="tel" id="accountPhone" name="accountPhone" pattern="\d{10,}"
+                      <input type="tel" id="accountPhone" name="accountPhone" pattern=".{10,}"
                           placeholder="Телефон" required
                           aria-labelledby="accountPhoneLabel accountInfoHeading">
                       <shop-md-decorator error-message="Invalid Phone Number" aria-hidden="true">
-                        <label id="accountPhoneLabel">Phone Number</label>
+                        <label id="accountPhoneLabel">Телефон</label>
                         <shop-underline></shop-underline>
                       </shop-md-decorator>
                     </shop-input>
@@ -179,7 +179,7 @@ class ShopCheckout extends PolymerElement {
                     <div>[[_formatPrice(total)]]</div>
                   </div>
                   <shop-button responsive id="submitBox">
-                    <input type="button" on-click="_submit" value="Place Order">
+                    <input type="button" on-click="_submit" value="Отправить заказ">
                   </shop-button>
                 </section>
               </div>
@@ -189,7 +189,7 @@ class ShopCheckout extends PolymerElement {
 
         <!-- Success message UI -->
         <header state="success">
-          <h1>Thank you</h1>
+          <h1>Заказ успешно размещен</h1>
           <p>[[response.successMessage]]</p>
           <shop-button responsive>
             <a href="/">Finish</a>
@@ -198,10 +198,10 @@ class ShopCheckout extends PolymerElement {
 
         <!-- Error message UI -->
         <header state="error">
-          <h1>We couldn&acute;t process your order</h1>
+          <h1>Ошибка размещения заказа</h1>
           <p id="errorMessage">[[response.errorMessage]]</p>
           <shop-button responsive>
-            <a href="/checkout">Try again</a>
+            <a href="/checkout">Пожалуйста, повторите попытку</a>
           </shop-button>
         </header>
 
@@ -299,25 +299,49 @@ class ShopCheckout extends PolymerElement {
 
   _submit(e) {
     if (this._validateForm()) {
-      // To send the form data to the server:
-      // 2) Remove the code below.
-      // 3) Uncomment `this.$.checkoutForm.submit()`.
+      // // To send the form data to the server:
+      // // 2) Remove the code below.
+      // // 3) Uncomment `this.$.checkoutForm.submit()`.
 
-      this.$.checkoutForm.dispatchEvent(new CustomEvent('iron-form-presubmit', {
-        composed: true}));
+      // this.$.checkoutForm.dispatchEvent(new CustomEvent('iron-form-presubmit', {
+      //   composed: true}));
 
-      this._submitFormDebouncer = Debouncer.debounce(this._submitFormDebouncer,
-        timeOut.after(1000), () => {
-          this.$.checkoutForm.dispatchEvent(new CustomEvent('iron-form-response', {
-            composed: true, detail: {
-              response: {
-                success: 1,
-                successMessage: 'Demo checkout process complete.'
-              }
-            }}));
-        });
+      // this._submitFormDebouncer = Debouncer.debounce(this._submitFormDebouncer,
+      //   timeOut.after(1000), () => {
+      //     this.$.checkoutForm.dispatchEvent(new CustomEvent('iron-form-response', {
+      //       composed: true, detail: {
+      //         response: {
+      //           success: 1,
+      //           successMessage: 'Заказ успешно размещен.'
+      //         }
+      //       }}));
+      //   });
 
-      // this.$.checkoutForm.submit();
+      // // this.$.checkoutForm.submit();
+
+      let items = ""
+      this.cart.forEach((cartItem) => {
+        items = `${items} ${cartItem.item.name} (count=${cartItem.quantity})`
+      });
+
+      const body = {
+        items,
+        test: 'test'
+      }
+
+      fetch(`/api/`, {
+        method: 'POST',
+        body: body,
+        mode: "no-cors",
+        headers:{
+          'Content-Type': 'application/json',
+        }
+      })
+      //.then(res => res.json())
+      .then(response => console.log('Success:', response))
+      .catch(error => console.error('Error:', error));
+
+      this.$.checkoutForm.submit();
     }
   }
 

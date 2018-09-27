@@ -102,7 +102,7 @@ class ShopHome extends PolymerElement {
       </template>
     </dom-repeat>
 
-    <button onClick="()=>alert('sending')">
+    <button on-click="sendmail">
       send email
     </button>
     
@@ -130,6 +130,27 @@ class ShopHome extends PolymerElement {
         bubbles: true, composed: true, detail: {title: 'Home'}}));
     }
   }
+
+  sendmail() {
+    console.log('sendmail');
+
+
+    fetch(`/api/`, {
+      method: 'POST',
+      body: {name: "sgdfgdfs_dfgdsfg"},
+      mode: "no-cors",
+      headers:{
+        'Content-Type': 'application/json',
+      }
+    })
+    //.then(res => res.json())
+    .then(response => console.log('Success:', response))
+    .catch(error => console.error('Error:', error));
+
+
+    
+  }
+
 }
 
 customElements.define(ShopHome.is, ShopHome);
