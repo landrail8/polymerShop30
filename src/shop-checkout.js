@@ -112,7 +112,8 @@ class ShopCheckout extends PolymerElement {
           <iron-form id="checkoutForm"
               on-iron-form-response="_didReceiveResponse"
               on-iron-form-presubmit="_willSendRequest">
-            <form method="post" action="data/sample_success_response.json" enctype="application/x-www-form-urlencoded">
+            <!--<form method="post" action="data/sample_success_response.json" enctype="application/x-www-form-urlencoded">-->
+            <form method="post" action="api.php" enctype="application/x-www-form-urlencoded">
 
               <div class="subsection" visible$="[[!_hasItems]]">
                 <p class="empty-cart">Your <iron-icon icon="shopping-cart"></iron-icon> is empty.</p>
@@ -319,28 +320,6 @@ class ShopCheckout extends PolymerElement {
 
       // // this.$.checkoutForm.submit();
 
-      let items = ""
-      this.cart.forEach((cartItem) => {
-        items = `${items} ${cartItem.item.name} (count=${cartItem.quantity})`
-      });
-
-      const body = {
-        items,
-        test: 'test'
-      }
-
-      fetch(`/api/`, {
-        method: 'POST',
-        body: body,
-        mode: "no-cors",
-        headers:{
-          'Content-Type': 'application/json',
-        }
-      })
-      //.then(res => res.json())
-      .then(response => console.log('Success:', response))
-      .catch(error => console.error('Error:', error));
-
       this.$.checkoutForm.submit();
     }
   }
@@ -442,11 +421,20 @@ class ShopCheckout extends PolymerElement {
     // is the quantity for some item `i`.
     body.cartItemsId = [];
     body.cartItemsQuantity = [];
+    
+    const cartItems = [];
 
     this.cart.forEach((cartItem) => {
       body.cartItemsId.push(cartItem.item.name);
       body.cartItemsQuantity.push(cartItem.quantity);
+      
+      cartItems.push(`${cartItem.item.name} (${cartItem.quantity}шт.)`);
     });
+
+    body.cartItems = cartItems.join('\n');
+
+    console.log('_willSendRequest body = ', body)
+
   }
 
   /**
@@ -454,6 +442,9 @@ class ShopCheckout extends PolymerElement {
    * and transitioning to the success or error UI.
    */
   _didReceiveResponse(e) {
+
+    console.log('_didReceiveResponse e = ', e)
+
     let response = e.detail.response;
 
     this.response = response;
