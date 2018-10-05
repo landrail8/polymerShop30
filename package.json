@@ -17,6 +17,7 @@
     "test": "rm -rf build/ && polymer lint && polymer test"
   },
   "dependencies": {
+    "@fabricelements/skeleton-carousel": "^3.0.2",
     "@polymer/app-layout": "^3.0.0-pre.19",
     "@polymer/app-route": "^3.0.0-pre.19",
     "@polymer/app-storage": "^3.0.0-pre.19",

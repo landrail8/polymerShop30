@@ -9,6 +9,10 @@ import './shop-select.js';
 import { Debouncer } from '@polymer/polymer/lib/utils/debounce.js';
 import { microTask } from '@polymer/polymer/lib/utils/async.js';
 
+
+//import '@fabricelements/skeleton-carousel/skeleton-carousel.js';
+
+
 class ShopDetail extends PolymerElement {
   static get template() {
     return html`
@@ -183,6 +187,30 @@ class ShopDetail extends PolymerElement {
           <h2>Description</h2>
           <p id="desc"></p>
         </div>
+
+
+        <skeleton-carousel dots nav loop>
+          <iron-image placeholder="https://source.unsplash.com/category/nature/10x10"
+                      data-src="https://source.unsplash.com/category/nature/500x300"
+                      sizing="cover"
+                      preload
+                      fade
+                      ></iron-image>
+          <iron-image placeholder="https://source.unsplash.com/category/food/10x10"
+                      data-src="https://source.unsplash.com/category/food/500x300"
+                      sizing="cover"
+                      preload
+                      fade
+                      ></iron-image>
+          <iron-image placeholder="https://source.unsplash.com/category/buildings/10x10"
+                      data-src="https://source.unsplash.com/category/buildings/500x300"
+                      sizing="cover"
+                      preload
+                      fade
+                      ></iron-image>
+        </skeleton-carousel>
+
+
         <shop-button responsive>
           <button on-click="_addToCart" aria-label="Add this item to cart">Add to Cart</button>
         </shop-button>
