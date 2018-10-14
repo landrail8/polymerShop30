@@ -472,7 +472,7 @@ class ShopCheckout extends PolymerElement {
   }
 
   _formatPrice(total) {
-    return isNaN(total) ? '' : '$' + total.toFixed(2);
+    return isNaN(total) ? '' : '₽' + total.toFixed(2);
   }
 
   _getEntryTotal(entry) {
