@@ -10,7 +10,7 @@ import { Debouncer } from '@polymer/polymer/lib/utils/debounce.js';
 import { microTask } from '@polymer/polymer/lib/utils/async.js';
 
 
-//import '@fabricelements/skeleton-carousel/skeleton-carousel.js';
+import './shop-image-gallery.js';
 
 
 class ShopDetail extends PolymerElement {
@@ -27,20 +27,20 @@ class ShopDetail extends PolymerElement {
         @apply --layout-center-justified;
       }
 
-      shop-image {
+      shop-image-gallery {
         position: relative;
         margin: 64px 32px;
         width: 50%;
         max-width: 600px;
-        --shop-image-img: {
+        --shop-image-gallery-img: {
           @apply --layout-fit;
         };
       }
 
-      shop-image::before {
+      shop-image-gallery::before {
         content: "";
         display: block;
-        padding-top: 100%;
+        padding-top: 0;
       }
 
       .detail {
@@ -99,7 +99,7 @@ class ShopDetail extends PolymerElement {
           @apply --layout-center;
         }
 
-        shop-image {
+        shop-image-gallery {
           margin: 0;
           width: 80%;
         }
@@ -145,7 +145,16 @@ class ShopDetail extends PolymerElement {
         failure="{{failure}}"></shop-category-data>
 
     <div id="content" hidden$="[[failure]]">
+
+
+    <!-- 
       <shop-image alt="[[item.title]]" src="[[item.largeImage]]"></shop-image>
+    -->
+
+    
+      <shop-image-gallery alt="[[item.title]]" src="[[item.largeImage]]" gallery="[[item.gallery]]"></shop-image-gallery>
+
+
       <div class="detail" has-content$="[[_isDefined(item)]]">
         <h1>[[item.title]]</h1>
         <div class="price">[[_formatPrice(item.price)]]</div>
@@ -187,30 +196,6 @@ class ShopDetail extends PolymerElement {
           <h2>Description</h2>
           <p id="desc"></p>
         </div>
-
-
-        <skeleton-carousel dots nav loop>
-          <iron-image placeholder="https://source.unsplash.com/category/nature/10x10"
-                      data-src="https://source.unsplash.com/category/nature/500x300"
-                      sizing="cover"
-                      preload
-                      fade
-                      ></iron-image>
-          <iron-image placeholder="https://source.unsplash.com/category/food/10x10"
-                      data-src="https://source.unsplash.com/category/food/500x300"
-                      sizing="cover"
-                      preload
-                      fade
-                      ></iron-image>
-          <iron-image placeholder="https://source.unsplash.com/category/buildings/10x10"
-                      data-src="https://source.unsplash.com/category/buildings/500x300"
-                      sizing="cover"
-                      preload
-                      fade
-                      ></iron-image>
-        </skeleton-carousel>
-
-
         <shop-button responsive>
           <button on-click="_addToCart" aria-label="Add this item to cart">Add to Cart</button>
         </shop-button>
