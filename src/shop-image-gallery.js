@@ -39,14 +39,18 @@ class ShopImageGallery extends PolymerElement {
   -->
 
     
-  <skeleton-carousel dots nav loop>
+  <skeleton-carousel nav loop>
 
 
-    <template is="dom-repeat" items="[[gallery]]">
+  <template is="dom-repeat" items="[[gallery]]">
+    <div>    
       <iron-image 
-        src="[[item]]"
-        >
-      </iron-image>
+            data-src$="[[item]]"
+            fade=""
+            preload=""
+            >
+          </iron-image>
+      </div>
     </template>
   
 
