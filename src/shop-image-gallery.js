@@ -45,9 +45,8 @@ class ShopImageGallery extends PolymerElement {
   <template is="dom-repeat" items="[[gallery]]">
     <div>    
       <iron-image 
-            data-src$="[[item]]"
+            src="[[item]]"
             fade=""
-            preload=""
             >
           </iron-image>
       </div>
