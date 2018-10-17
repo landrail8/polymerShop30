@@ -218,7 +218,7 @@ class ShopCartItem extends PolymerElement {
   }
 
   _formatPrice(price) {
-    return price ? '₽' + price.toFixed(2) : '';
+    return price ? price.toFixed(2) + 'руб.' : '';
   }
 
   _removeItem() {
