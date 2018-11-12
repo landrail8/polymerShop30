@@ -9,9 +9,9 @@ class ShopArticles extends LitElement {
   constructor() {
     super();
     this.items = [
-      {i: '0'},
-      {i: '1'},
-      {i: '2'}
+      {title: 'title 1', anons: 'anons 111 anons anons anons 111 anons anons'},
+      {title: 'title 2', anons: 'anons 222 anons anons anons 222 anons anons'},
+      {title: 'title 3', anons: 'anons 333 anons anons anons 333 anons anons'}
     ]
   }
 
@@ -22,7 +22,7 @@ class ShopArticles extends LitElement {
       <iron-list .items="${items}" @click="${e => this._itemClickHandler(e)}">
         <template>
           <div>
-            [[item.i]]
+            [[item.title]]
           </div>
         </template>
       </iron-list>`;
