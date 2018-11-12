@@ -267,6 +267,13 @@ class ShopApp extends PolymerElement {
                 </shop-tab>
                 </template>
               </dom-repeat>
+
+
+              <shop-tab name="articles">
+                <a href="/articles">Как носить</a>
+              </shop-tab>
+              
+              
             </shop-tabs>
           </template>
         </dom-if>
@@ -284,6 +291,11 @@ class ShopApp extends PolymerElement {
               <a name="[[category.name]]" href="/list/[[category.name]]">[[category.title]]</a>
             </template>
           </dom-repeat>
+
+
+          <a name="how-wearing" href="/articles">Как носить</a>
+
+          
         </iron-selector>
       </app-drawer>
       </template>
