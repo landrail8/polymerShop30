@@ -272,7 +272,7 @@ class ShopApp extends PolymerElement {
               <shop-tab name="articles">
                 <a href="/articles">Как носить</a>
               </shop-tab>
-              
+
               
             </shop-tabs>
           </template>
@@ -312,6 +312,13 @@ class ShopApp extends PolymerElement {
       <shop-cart name="cart" cart="[[cart]]" total="[[total]]"></shop-cart>
       <!-- checkout view -->
       <shop-checkout name="checkout" cart="[[cart]]" total="[[total]]" route="{{subroute}}"></shop-checkout>
+
+
+
+      <!-- articles -->
+      <shop-articles name="articles" route="{{subroute}}"></shop-articles>
+
+
 
       <shop-404-warning name="404"></shop-404-warning>
     </iron-pages>
@@ -408,6 +415,13 @@ class ShopApp extends PolymerElement {
         case 'checkout':
           import('./shop-checkout.js').then(cb);
           break;
+
+
+        case 'articles':
+          import('./shop-articles.js').then(cb);
+          break;
+
+
         default:
           this._pageLoaded(Boolean(oldPage));
       }
@@ -566,7 +580,7 @@ class ShopApp extends PolymerElement {
   }
 
   _computeShouldShowTabs(page, smallScreen) {
-    return (page === 'home' || page === 'list' || page === 'detail') && !smallScreen;
+    return (page === 'home' || page === 'list' || page === 'detail' || page === 'articles') && !smallScreen;
   }
 
   _computeShouldRenderTabs(_shouldShowTabs, loadComplete) {
